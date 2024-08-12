@@ -14,8 +14,10 @@ services:
       - "3001:3001"
     container_name: nodeapp
   database:
-    image: postgres
+    image: postgres:latest
     container_name: database
+    volumes:
+       - ./createTable.sql:/docker-entrypoint-initdb.d/createTable.sql
     restart: always
     tty: true
     env_file: .env
